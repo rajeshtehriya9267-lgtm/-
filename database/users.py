@@ -1,11 +1,15 @@
 from datetime import datetime, timedelta
-from .database import db
+from .database import get_db
 
 
 class UsersDB:
-    def __init__(self):
-        self.col = db.users
-        self.history = db.history
+    @property
+    def col(self):
+        return get_db().users
+
+    @property
+    def history(self):
+        return get_db().history
 
     async def ensure_indexes(self):
         await self.col.create_index("user_id", unique=True)
