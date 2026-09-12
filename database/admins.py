@@ -1,9 +1,11 @@
-from .database import db
+from .database import get_db
 
 
 class AdminsDB:
-    def __init__(self):
-        self.col = db.admins
+    # ✅ Fix: __init__ ki jagah property
+    @property
+    def col(self):
+        return get_db().admins
 
     async def add(self, user_id: int):
         await self.col.update_one({"user_id": user_id}, {"$set": {"admin": True}}, upsert=True)
