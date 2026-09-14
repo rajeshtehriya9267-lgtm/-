@@ -1,0 +1,8 @@
+pyrogram
+tgcrypto
+pytgcalls
+motor
+python-dotenv
+yt-dlp
+aiohttp
+pillow
